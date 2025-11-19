@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace PipesCopy;
 
 internal static class Program
@@ -16,9 +18,9 @@ internal static class Program
 
             Console.SetCursorPosition(0, StartLine);
             
-            Console.WriteLine($"Width: {Console.WindowWidth} Height: {Console.WindowHeight}  ");
-            Console.WriteLine($"Pos: {pos.X}, {pos.Y}  ");
-            Console.WriteLine($"Direction: {dir}  ");
+            Console.WriteLine($"Width: {Console.WindowWidth} Height: {Console.WindowHeight}   ");
+            Console.WriteLine($"Pos: {pos.X}, {pos.Y}   ");
+            Console.WriteLine($"Direction: {dir}   ");
 
             Console.SetCursorPosition(savedPos.Left, savedPos.Top);
         }
@@ -80,6 +82,11 @@ internal static class Program
         if (pos.Y >= Console.WindowHeight) pos.Y = 0;
     }
 
+    // private static int ChangeSpeed(string key)
+    // {
+    //     if (key == ConsoleKey.OemPlus) 
+    // }
+
 
     private static void Main()
     {
@@ -89,11 +96,16 @@ internal static class Program
         var countSinceDirChange = 0;
         var direction = GetRandomDirection((Direction)Random.Next(0, 4));
 
+        // Fpms (Lower = faster)
+        var speed = 10;
+
         Console.Clear();
         Console.CursorVisible = false;
 
         while (running)
         {
+            if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape) running = false;
+            
             DebugDisplay.ShowInfo(
                 currPos,
                 direction
@@ -126,12 +138,12 @@ internal static class Program
 
             WrapCursorPosition(ref currPos);
             Console.SetCursorPosition(currPos.X, currPos.Y);
-            Console.Write("#");
+            Console.Write("###");
             countSinceDirChange += 1;
-            Thread.Sleep(50);
+            Thread.Sleep(speed);
         }
 
-        Console.SetCursorPosition(0, 2);
+        Console.SetCursorPosition(0, 4);
         Console.WriteLine("Ferdig");
         Console.CursorVisible = true;
     }

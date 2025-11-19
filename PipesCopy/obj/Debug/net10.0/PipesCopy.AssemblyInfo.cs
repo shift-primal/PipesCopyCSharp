@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PipesCopy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f16c73533ab0d744b9d8fc141220a9e874318b69")]
 [assembly: System.Reflection.AssemblyProductAttribute("PipesCopy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PipesCopy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
