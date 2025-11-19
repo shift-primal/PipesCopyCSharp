@@ -1,0 +1,14 @@
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/bin/Debug/net10.0/PipesCopy
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/bin/Debug/net10.0/PipesCopy.deps.json
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/bin/Debug/net10.0/PipesCopy.runtimeconfig.json
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/bin/Debug/net10.0/PipesCopy.dll
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/bin/Debug/net10.0/PipesCopy.pdb
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.GeneratedMSBuildEditorConfig.editorconfig
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.AssemblyInfoInputs.cache
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.AssemblyInfo.cs
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.csproj.CoreCompileInputs.cache
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.dll
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/refint/PipesCopy.dll
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.pdb
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/PipesCopy.genruntimeconfig.cache
+/home/kasperh/RiderProjects/PipesCopy/PipesCopy/obj/Debug/net10.0/ref/PipesCopy.dll
