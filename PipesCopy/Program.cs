@@ -1,8 +1,6 @@
-using System.Diagnostics;
-
 namespace PipesCopy;
 
-internal static class Program
+internal static class ProgramOld
 {
     private static class DebugDisplay
     {
@@ -17,9 +15,9 @@ internal static class Program
             var savedPos = Console.GetCursorPosition();
 
             Console.SetCursorPosition(0, StartLine);
-            
+
             Console.WriteLine($"Width: {Console.WindowWidth} Height: {Console.WindowHeight}   ");
-            Console.WriteLine($"Pos: {pos.X}, {pos.Y}   ");
+            Console.WriteLine($"Position - X: {pos.X}, Y: {pos.Y}   ");
             Console.WriteLine($"Direction: {dir}   ");
 
             Console.SetCursorPosition(savedPos.Left, savedPos.Top);
@@ -27,6 +25,7 @@ internal static class Program
     }
 
     private static readonly Random Random = new();
+
 
     private enum Direction
     {
@@ -44,6 +43,7 @@ internal static class Program
         { Direction.Right, Direction.Left }
     };
 
+
     private struct CurrentPosition(int x, int y)
     {
         public int X { get; set; } = x;
@@ -56,14 +56,15 @@ internal static class Program
         return roll == 10;
     }
 
-    private static Direction GetRandomDirection(Direction currentDirection)
+    private static Direction GetRandomDirection(Direction currDir)
     {
         Direction newDirection;
 
         do
         {
             newDirection = (Direction)Random.Next(0, 4);
-        } while (IsOpposite(newDirection, currentDirection));
+        } while (IsOpposite(newDirection, currDir));
+
 
         return newDirection;
     }
@@ -82,22 +83,25 @@ internal static class Program
         if (pos.Y >= Console.WindowHeight) pos.Y = 0;
     }
 
-    // private static int ChangeSpeed(string key)
-    // {
-    //     if (key == ConsoleKey.OemPlus) 
-    // }
-
 
     private static void Main()
     {
-        var running = true;
-        
-        var currPos = new CurrentPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
-        var countSinceDirChange = 0;
-        var direction = GetRandomDirection((Direction)Random.Next(0, 4));
+        // ### Settings ### //
 
-        // Fpms (Lower = faster)
-        var speed = 10;
+        // Fpms (Frames per millisecond) | Lower = faster
+        var speed = 50;
+
+        // Start position | [X (0 = left), Y (0 = top)]
+        var startPos = new[] { Console.WindowWidth / 2, Console.WindowHeight / 2 };
+
+        // ### Program ### //
+
+        var running = true;
+
+        var currPos = new CurrentPosition(startPos[0], startPos[1]);
+        var countSinceDirChange = 0;
+        var currDir = GetRandomDirection((Direction)Random.Next(0, 4));
+
 
         Console.Clear();
         Console.CursorVisible = false;
@@ -105,19 +109,20 @@ internal static class Program
         while (running)
         {
             if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape) running = false;
-            
+
             DebugDisplay.ShowInfo(
                 currPos,
-                direction
+                currDir
             );
 
             if (ShouldGetNewDirection(countSinceDirChange))
             {
-                direction = GetRandomDirection(direction);
+                currDir = GetRandomDirection(currDir);
                 countSinceDirChange = 0;
+                Console.ForegroundColor = (ConsoleColor)Random.Next(1, 16);
             }
 
-            switch (direction)
+            switch (currDir)
             {
                 case Direction.Up:
                     currPos.Y -= 1;
@@ -137,8 +142,10 @@ internal static class Program
             }
 
             WrapCursorPosition(ref currPos);
+
             Console.SetCursorPosition(currPos.X, currPos.Y);
-            Console.Write("###");
+            Console.Write("█");
+
             countSinceDirChange += 1;
             Thread.Sleep(speed);
         }
